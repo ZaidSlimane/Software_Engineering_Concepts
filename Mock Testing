@@ -1,20 +1,24 @@
-What's mocking in software engineering? certainly not to make fun of others because they write bad code!
+# Mocking in Software Engineering
 
-Mocking is the process of simulating the external dependencies of the code that's being tested; isolating your code form the multitude of things that's depends on
-this simulation it comes in two formes
--> Fake data.
--> Fake interactions
+Mocking is the process of simulating the external dependencies of the code that's being tested. This allows you to isolate your code from the multitude of things it depends on, making testing simpler and more efficient. 
 
-for example, if we have a function that depends on a connection to database 
-but the database is not our focus here, but the function itself ie, we aer not going to test the connection to the database works. our function just depends on that process.
-you will ask: does the test would not be real if we omit that connection?
-the asnwer is : of course it would be real but when it comes to the complixity and the maintainabilty it's not 
-instead, we can provide a fake database to our function which is considered mocked.
+Mocking typically comes in two forms:
+- **Fake Data**
+- **Fake Interactions**
 
-When we should mock?
-Pros:
-less setup 
-No cleanup
-Fadter 
-Isolated 
+---
 
+### Why Mocking is Useful?
+
+Let's say you have a function that depends on an external service, like a database. Instead of actually connecting to a database (which may be slow, require setup, or introduce dependencies you don't want to test), you can **mock** the database connection.
+
+#### Example: Database Connection Mocking
+
+Consider the following function that queries a database:
+
+```python
+# Function to be tested
+def get_user_name(user_id, db_connection):
+    query = f"SELECT name FROM users WHERE id = {user_id}"
+    result = db_connection.execute(query)
+    return result.fetchone()[0]
