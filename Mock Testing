@@ -1,0 +1,20 @@
+What's mocking in software engineering? certainly not to make fun of others because they write bad code!
+
+Mocking is the process of simulating the external dependencies of the code that's being tested; isolating your code form the multitude of things that's depends on
+this simulation it comes in two formes
+-> Fake data.
+-> Fake interactions
+
+for example, if we have a function that depends on a connection to database 
+but the database is not our focus here, but the function itself ie, we aer not going to test the connection to the database works. our function just depends on that process.
+you will ask: does the test would not be real if we omit that connection?
+the asnwer is : of course it would be real but when it comes to the complixity and the maintainabilty it's not 
+instead, we can provide a fake database to our function which is considered mocked.
+
+When we should mock?
+Pros:
+less setup 
+No cleanup
+Fadter 
+Isolated 
+
